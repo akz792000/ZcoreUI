@@ -1,0 +1,28 @@
+/**
+ * 
+ * @author Ali Karimizandi
+ * @since 2012-2014 
+ * @version 1.0
+ *  
+ */
+
+.zcore-loading {
+	position : absolute; 
+	opacity: .6;
+	filter: Alpha(Opacity=6);
+	background: no-repeat center rgb(240,240,240); 
+	z-index: 10000;
+}
+
+.zcore-loading-image-32 {background-image: url(images/loading/preload-32.gif);}
+.zcore-loading-image-48 {background-image: url(images/loading/preload-48.gif);}
+.zcore-loading-image-64 {background-image: url(images/loading/preload-64.gif);}
+.zcore-loading-image-128 {background-image: url(images/loading/preload-128.gif);}
+	
+#ZcoreHint {display: none; position: absolute; -moz-border-radius: 5px; -webkit-border-radius: 5px; z-index: 10000;}
+#ZcoreHint span {position: absolute; top: -10px;}
+#ZcoreHint div {padding: 10px;}
+
+#ZcoreBar {display: none; position: absolute; border-right: 0px !important; border-left: 0px !important; width: 100%; z-index: 10000; height: 32px;}
+#ZcoreBar div {position: absolute; top: 8px;}
+#ZcoreBar p {padding-top: 8px;}

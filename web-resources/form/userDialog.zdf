@@ -1,0 +1,50 @@
+<Z><E><![CDATA[userDialog.onFinalize(function() {
+  username.disabled(userAction.value() != 'persist');
+  accountExpiredDate.disabled(accountNonExpired.value());
+  credentialsExpiredDate.disabled(credentialsNonExpired.value());
+  accountLockedDue.disabled(accountNonLocked.value());
+  mainPnl.disabled(userAction.value() == 'remove');
+});
+  
+accountNonExpired.onClick(function() {
+	if (accountNonExpired.value() == "true") {
+		accountExpiredDate.disabled(true);
+		accountExpiredDate.clear();
+	} else {
+		accountExpiredDate.disabled(false);
+	}
+});	
+
+credentialsNonExpired.onClick(function() {
+	if (credentialsNonExpired.value() == "true") {
+		credentialsExpiredDate.disabled(true);
+		credentialsExpiredDate.clear();
+  	} else {
+		credentialsExpiredDate.disabled(false);
+  	}
+});
+
+accountNonLocked.onClick(function() {
+	if (accountNonLocked.value() == "true") {
+    	accountLockedDue.disabled(true);
+		accountLockedDue.clear();
+	} else {
+		accountLockedDue.disabled(false);
+	}
+});
+
+ok.onClick(function() {
+	userDialog.call({
+      action : '/portal/service/userDialog/' + userAction.value(),
+		success: function(data, textStatus, jqXHR) {				
+			app.bar.show('success', app.message.msg('success'));
+			userDialog.close();
+			app.forms.user.elements.userGrid.refresh();      
+		}	
+	});
+});
+
+cancel.onClick(function() {
+	userDialog.close();
+});
+]]></E><M><![CDATA[{"attributes":{"type":"form","id":"userDialog","direction":"inherit","disabled":false,"height":329,"width":707,"top":236,"left":446,"cssClass":"","cssStyle":"","title":"${userDialog.title}","position":"center center","align":"default","options":["titlebar","modal","draggable"],"icons":["refresh"]},"components":[{"attributes":{"type":"panel","id":"mainPnl","direction":"inherit","disabled":false,"height":253,"width":683,"top":3,"left":7,"visible":true,"cssClass":"zui-border-style","cssStyle":"","title":"","position":"default","align":"default"},"components":[{"attributes":{"type":"label","id":"username_lbl","value":"${userDialog.username}","direction":"inherit","disabled":false,"height":14,"width":175,"top":12,"left":13,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"label","id":"enabled_lbl","value":"${userDialog.enabled}","direction":"inherit","disabled":false,"height":14,"width":127,"top":12,"left":327,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"label","id":"accountNonExpired_lbl","value":"${userDialog.accountNonExpired}","direction":"inherit","disabled":false,"height":14,"width":170,"top":48,"left":13,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"label","id":"credentialsNonExpired_lbl","value":"${userDialog.credentialsNonExpired}","direction":"inherit","disabled":false,"height":14,"width":159,"top":84,"left":13,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"label","id":"accountNonLocked_lbl","value":"${userDialog.accountNonLocked}","direction":"inherit","disabled":false,"height":14,"width":170,"top":120,"left":12,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"label","id":"accountExpiredDate_lbl","value":"${userDialog.accountExpiredDate}","direction":"inherit","disabled":false,"height":14,"width":123,"top":48,"left":326,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"label","id":"credentialsExpiredDate_lbl","value":"${userDialog.credentialsExpiredDate}","direction":"inherit","disabled":false,"height":14,"width":120,"top":84,"left":327,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"label","id":"accountLockedDue_lbl","value":"${userDialog.accountLockedDue}","direction":"inherit","disabled":false,"height":14,"width":116,"top":120,"left":328,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"label","id":"authority_lbl","value":"${userDialog.authority}","direction":"inherit","disabled":false,"height":14,"width":173,"top":156,"left":12,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"hidden","id":"userId","value":"","top":187,"left":15,"post":true,"sequence":0,"validators":["[]"]}},{"attributes":{"type":"hidden","id":"userAction","value":"userAction","top":187,"left":43,"post":true,"sequence":0,"validators":["[]"]}},{"attributes":{"type":"text","id":"username","value":"","direction":"inherit","disabled":false,"height":22,"width":98,"top":10,"left":164,"visible":true,"tabindex":1,"cssClass":"","cssStyle":"","title":"","position":"default","readonly":false,"post":true,"sequence":0,"validators":["[]"],"maxlength":-1}},{"attributes":{"type":"buttonset","id":"enabled","value":[""],"direction":"inherit","disabled":false,"height":24,"width":144,"top":10,"left":480,"visible":true,"tabindex":2,"cssClass":"","cssStyle":"","title":"","position":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"","kind":"radio"}},{"attributes":{"type":"buttonset","id":"accountNonExpired","value":[""],"direction":"inherit","disabled":false,"height":24,"width":144,"top":42,"left":164,"visible":true,"tabindex":3,"cssClass":"","cssStyle":"","title":"","position":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"","kind":"radio"}},{"attributes":{"type":"calendar","id":"accountExpiredDate","value":"","direction":"inherit","disabled":false,"height":24,"width":100,"top":42,"left":480,"visible":true,"tabindex":4,"cssClass":"","cssStyle":"","title":"","position":"default","readonly":false,"post":true,"sequence":0,"validators":["[]"],"data":[""],"service":""}},{"attributes":{"type":"buttonset","id":"credentialsNonExpired","value":[""],"direction":"inherit","disabled":false,"height":24,"width":144,"top":78,"left":164,"visible":true,"tabindex":5,"cssClass":"","cssStyle":"","title":"","position":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"","kind":"radio"}},{"attributes":{"type":"calendar","id":"credentialsExpiredDate","value":"","direction":"inherit","disabled":false,"height":24,"width":100,"top":79,"left":480,"visible":true,"tabindex":6,"cssClass":"","cssStyle":"","title":"","position":"default","readonly":false,"post":true,"sequence":0,"validators":["[]"],"data":[""],"service":""}},{"attributes":{"type":"buttonset","id":"accountNonLocked","value":[""],"direction":"inherit","disabled":false,"height":24,"width":144,"top":117,"left":163,"visible":true,"tabindex":7,"cssClass":"","cssStyle":"","title":"","position":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"","kind":"radio"}},{"attributes":{"type":"textarea","id":"accountLockedDue","value":"accountLockedDue","direction":"inherit","disabled":false,"height":109,"width":183,"top":123,"left":480,"visible":true,"tabindex":8,"cssClass":"","cssStyle":"","title":"","position":"default","readonly":false,"post":true,"sequence":0,"validators":["[]"],"maxlength":-1}},{"attributes":{"type":"lovtree","id":"authority","value":[""],"direction":"inherit","disabled":false,"height":24,"width":144,"top":152,"left":164,"visible":true,"tabindex":9,"cssClass":"","cssStyle":"","title":"${userDialog.authority}","position":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"/portal/service/userDialog/authority","master":0,"lovHeight":200,"lovWidth":300,"valWidth":0}}]},{"attributes":{"type":"button","id":"ok","value":"${ok}","disabled":false,"height":24,"width":100,"top":265,"left":226,"visible":true,"tabindex":100,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"button","id":"cancel","value":"${cancel}","disabled":false,"height":24,"width":100,"top":266,"left":334,"visible":true,"tabindex":200,"cssClass":"","cssStyle":"","title":"","position":"default"}}]}]]></M></Z>

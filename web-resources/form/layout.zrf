@@ -1,0 +1,49 @@
+<Z><E><![CDATA[panelInfo.onFinalize(function() {
+  detour.focus();
+});
+
+layout.onLoadParams(function(data) {
+  app.global('yesNo', data.yesNo.data);
+});
+
+detour.onKeypress(function(e) {
+  if (e.which === 13) {
+    var res = menu.getItem(detour.value());
+    if (res != null) { 
+      var cmd = res.command.split(',');
+      app.loadForm({
+        ui : cmd[0],
+        service : cmd[1]
+      });
+    }
+  }
+});
+
+menu.onClick(function(e) {
+  if (e.command) {
+    var cmd = e.command.split(',');
+    app.loadForm({
+      ui : cmd[0],
+      service : cmd[1],
+      success : function() { 
+        detour.value(e.title);
+      }
+    });
+  }
+});  
+  
+logout.onClick(function() {
+  layout.call({
+   		loading : 'body',
+       	action : '/portal/service/security/logout',
+		dataType : 'xml',	
+		success : function(data, textStatus, jqXHR) {
+			app.closeForm();
+          app.loadForm({
+            ui : '/form/login',
+          	service : '/portal/service/security/params',
+            compress : true
+          });						
+		}
+  });  
+});]]></E><M><![CDATA[{"a":["form","layout",0,0,154,885,205,142,"","","layoutForm",4,0,[],[]],"c":[{"a":["panel","panel0",0,0,31,881,91,0,1,"ui-state-active","","",3,4],"c":[{"a":["iconbtn","logout",0,28,28,1,850,1,-1,"","","${layout.logoutMsg}",0,141]},{"a":["panel","panel1",0,0,28,109,1,738,1,"ui-state-default ui-corner-all","","",0,0],"c":[{"a":["text","detour","",0,0,22,48,2,51,1,-1,"ui-corner-all","","",0,0,0,0,[],-1]},{"a":["label","detourMsg","${layout.detourMsg}",0,0,14,42,7,6,1,"","","",0]}]},{"a":["menu","menu",0,0,29,733,0,0,1,1,"","","",1,1,,"","body",160,250]}]},{"a":["panel","panelInfo",0,0,90,222,0,659,1,"ui-state-default","","",7,0],"c":[{"a":["label","account","account",0,0,14,126,12,88,1,"","color:#E17009","",0]},{"a":["label","accountMsg","${layout.accountMsg}",0,0,14,71,12,4,1,"","","",0]},{"a":["label","dateMsg","${layout.dateMsg}",0,0,14,63,36,4,1,"","","",0]},{"a":["label","date","date",0,0,14,119,36,87,1,"","color:#E17009","",0]},{"a":["label","clockMsg","${layout.clockMsg}",0,0,14,55,63,4,1,"","","",0]},{"a":["clock","clock","00:00:00",0,0,14,50,61,89,1,"","color:#E17009","",0]}]},{"a":["panel","panel2",0,0,90,654,0,0,1,"ui-state-default","","",1,0],"c":[{"a":["label","titleMsg","${layout.titleMsg}",0,0,14,285,39,169,1,"","color:#E17009","",0]},{"a":["image","image0",0,76,155,4,2,1,"","",0,"Zcore.png"]}]}]}]]></M></Z>

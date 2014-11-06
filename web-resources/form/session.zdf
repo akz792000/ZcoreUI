@@ -1,0 +1,55 @@
+<Z><E><![CDATA[  
+  grid.onRemoveClick(function() {
+    var row = grid.getSelectedRows();
+    if (row.length !== 1){
+      app.box.show(app.message.msg('error'), app.message.msg('oneRow'));
+    }
+    else {
+      app.box.show(
+        app.message.msg('question'), 
+        app.message.msg('expireUser'), 
+        'MB_YESNO',
+        {
+          'YES' :  function() {
+            session.call({
+              action : '/portal/service/session/kill',
+              actionParams : { id: row[0][0] },
+              success: function(data) {
+                app.box.show(app.message.msg('success'), app.message.msg('success'));
+                grid.refresh();
+                grid.focus();
+              }
+            });
+          }, 
+          'NO': function() {
+            grid.focus();
+          }
+        }, 
+        'YES'
+      );
+    }
+  });  
+   
+/*grid.addAction({
+      name : 'kill',
+      title : 'kill',				
+      action : function() {
+        var row = grid.getSelectedRows();
+        if (row.length !== 1) 
+          app.box.show(app.message.msg('error'), app.message.msg('oneRow'));
+        else {
+          sessionForm.call({
+            action : 'kill',
+            actionParams : {
+              id : parseInt(row[0][0])
+            },
+            success : function() {				
+              app.bar.show('success', app.message.msg('success'));
+              grid.refresh();
+            }			
+          });	 				
+        }
+      }	
+});*/
+
+]]></E><M><![CDATA[{"attributes":{"type":"form","id":"session","direction":"inherit","disabled":false,"height":375,"width":441,"top":213,"left":579,"cssClass":"","cssStyle":"","title":"${session.title}","position":"default","align":"default","options":["titlebar","draggable"],"icons":["close","refresh","help"]},"components":[{"attributes":{"type":"grid","id":"grid","value":"","direction":"inherit","disabled":false,"height":343,"width":437,"top":0,"left":0,"visible":true,"tabindex":0,"cssClass":"","cssStyle":"","title":"","position":"left top","align":"client","post":false,"sequence":0,"validators":["[]"],"data":[""],"service":"/portal/service/session/grid","limitPage":10,"multiSelected":false,"showNumber":false,"items":["[{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"0\"","\"width\":80","\"title\":\"${id}\"","\"length\":60","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"1\"","\"width\":150","\"title\":\"${username}\"","\"length\":60","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"2\"","\"width\":80","\"title\":\"${status}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}]"],"filterShow":true,"sortShow":true,"orderShow":true,"persistCaption":"","mergeCaption":"","removeCaption":"default","orderByItem":"","orderByItemSort":"asc","refreshOnRender":true}}]}]]></M></Z>

@@ -1,0 +1,28 @@
+<Z><E><![CDATA[  authorityTree
+	.onPersist(function(o) {
+      app.loadForm({
+        ui : '/form/authorityDialog',
+        service : '/portal/service/authorityDialog/params',
+        data : {
+    	  	authorityAction: 'persist', 
+      		authorityParent: o.attr('id')
+      }});
+  	})
+	.onMerge(function(o) {
+    	app.loadForm({
+          ui : '/form/authorityDialog',
+          service : '/portal/service/authorityDialog/params',         
+          data : {
+			authorityAction: 'merge', 
+			authorityId: o.attr('id')
+        }});
+  	})
+	.onRemove(function(o) {
+    	app.loadForm({ 
+          ui : '/form/authorityDialog',
+          service : '/portal/service/authorityDialog/params',          
+          data : {
+			authorityAction: 'remove', 
+			authorityId: o.attr('id')
+        }});
+  	});]]></E><M><![CDATA[{"attributes":{"type":"form","id":"authority","direction":"inherit","disabled":false,"height":222,"width":300,"top":289,"left":650,"cssClass":"","cssStyle":"","title":"${authority.title}","position":"default","align":"default","options":["titlebar","draggable"],"icons":["close","refresh","help"]},"components":[{"attributes":{"type":"tree","id":"authorityTree","value":"","direction":"inherit","disabled":false,"height":190,"width":296,"top":0,"left":0,"visible":true,"tabindex":0,"cssClass":"","cssStyle":"","title":"","position":"left top","align":"client","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"/portal/service/authority/authorityTree","master":0}}]}]]></M></Z>

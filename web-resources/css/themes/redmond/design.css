@@ -1,0 +1,163 @@
+/**
+ * 
+ * @author Ali Karimizandi
+ * @since 2012-2014 
+ * @version 1.0
+ *  
+ */
+
+.zui-form-designer .ui-dialog-content {background: url(../../images/dot.png) rgb(250, 250, 250);}
+
+/* 
+ * palette icon  
+ */
+.zui-palette-icon {width:16px; height: 16px; padding: 0.35em; float: left; margin: 1px;}
+
+/* 
+ * palette button  
+ */
+.zui-palette-btn {top: 2px; left: 2px; height: 63px; width: 88px;}
+
+/* 
+ * row one 
+ */
+.zui-palette-btn-form {top: 2px; left: 2px; background: #FFFFFF url(../../images/application.png) no-repeat center !important;}
+.zui-palette-btn-remove {top: 2px; left: 30px; background: #FFFFFF url(../../images/cross.png) no-repeat center !important;}
+.zui-palette-btn-run {top: 2px; left: 58px; background: #FFFFFF url(../../images/run.png) no-repeat center !important;}
+
+/*
+ * row two 
+ */
+.zui-palette-btn-load {top: 32px; left: 2px; background: #FFFFFF url(../../images/blue-folder-horizontal-open.png) no-repeat center !important;}
+.zui-palette-btn-save {top: 32px; left: 30px; background: #FFFFFF url(../../images/disk-return.png) no-repeat center !important;}
+.zui-palette-btn-saveAs {top: 32px; left: 58px; background: #FFFFFF url(../../images/disk-plus.png) no-repeat center !important;}
+
+/* 
+ * palette tab  
+ */
+.zui-palette-tab {top: 2px; left: 94px; height: 60px; width: 424px;}
+
+/* 
+ * palette standard tab  
+ */
+.zui-palette-tab-label {background: #FFFFFF url(../../images/ui-label-link.png) no-repeat center;}
+.zui-palette-tab-text {background: #FFFFFF url(../../images/selection-select-input.png) no-repeat center;}
+.zui-palette-tab-password {background: #FFFFFF url(../../images/ui-text-field-password.png) no-repeat center;}
+.zui-palette-tab-textarea {background: #FFFFFF url(../../images/ui-text-area.png) no-repeat center;}
+.zui-palette-tab-button {background: #FFFFFF url(../../images/ui-button-default.png) no-repeat center;}
+.zui-palette-tab-border {background: #FFFFFF url(../../images/border-outside.png) no-repeat center;}
+.zui-palette-tab-panel {background: #FFFFFF url(../../images/ui-panel.png) no-repeat center;}
+.zui-palette-tab-tab {background: #FFFFFF url(../../images/tab.png) no-repeat center;}
+.zui-palette-tab-accordion {background: #FFFFFF url(../../images/accordion.png) no-repeat center;}
+
+/* 
+ * palette ajax tab  
+ */
+.zui-palette-tab-menu {background: #FFFFFF url(../../images/ui-menu.png) no-repeat center;}
+.zui-palette-tab-grid {background: #FFFFFF url(../../images/grid.png) no-repeat center;}
+.zui-palette-tab-lovgrid {background: #FFFFFF url(../../images/ui-scroll-pane-table.png) no-repeat center;}
+.zui-palette-tab-buttonset {background: #FFFFFF url(../../images/radio_button.png) no-repeat center;}
+.zui-palette-tab-multiselect {background: #FFFFFF url(../../images/ui-list-box-blue.png) no-repeat center;}
+.zui-palette-tab-tree {background: #FFFFFF url(../../images/blue-folder-tree.png) no-repeat center;}
+.zui-palette-tab-lovtree {background: #FFFFFF url(../../images/ui-scroll-pane-tree.png) no-repeat center;}
+.zui-palette-tab-captcha {background: #FFFFFF url(../../images/captcha.png) no-repeat center;}
+
+/* 
+ * palette additional tab  
+ */
+.zui-palette-tab-hidden {background: #FFFFFF url(../../images/blue-document-attribute-h.png) no-repeat center;} 
+.zui-palette-tab-iconbtn {background: #FFFFFF url(../../images/anchor.png) no-repeat center;}
+.zui-palette-tab-image {background: #FFFFFF url(../../images/ui-button-image.png) no-repeat center;}
+.zui-palette-tab-clock {background: #FFFFFF url(../../images/clock.png) no-repeat center;}
+.zui-palette-tab-calendar {background: #FFFFFF url(../../images/calendar-blue.gif) no-repeat center;}
+.zui-palette-tab-upload {background: #FFFFFF url(../../images/drive-upload.png) no-repeat center;}
+
+.zui-text-content {font-weight: bold;}
+
+/* 
+ * zui component standard 
+ */
+.zui-text p {position: absolute; margin: 1px; top: 4px;}
+
+.zui-password p {position: absolute; margin: 1px; top: 4px;}
+
+.zui-textarea p {margin: 1px;}
+
+.zui-panel {overflow: hidden;}
+
+.zui-panel components {position: absolute; width: 100%; height: 100%; overflow: auto;}
+
+.zui-item {display: none;}
+
+/* 
+ * zui component additional 
+ */
+.zui-hidden {background: #FFFFFF url(../../images/blue-document-attribute-h.png) no-repeat center !important; display: inline;}
+
+.zui-image-widget {background: repeat-x scroll 50% 50% #FFFFFF; border: 2px dashed #a6c9e2; color: #222222;}
+ 
+/* 
+ * zui component ajax 
+ * zui component ajax and inherited component
+ */
+ 
+.zui-ajax {background-color: #FFFFFF !important; background-repeat: no-repeat !important; overflow: hidden; background-position: left !important;}
+ 
+.zui-calendar {background-image: url(../../images/calendar-blue.gif) !important;}
+.zui-menu {background-image: url(../../images/ui-menu.png) !important;}
+.zui-grid {background-image: url(../../images/grid.png) !important;}
+.zui-lovgrid {background-image: url(../../images/ui-scroll-pane-table.png) !important;}
+.zui-buttonset {background-image: url(../../images/radio_button.png) !important;}
+.zui-multiselect {background-image: url(../../images/ui-list-box-blue.png) !important;}
+.zui-tree {background-image: url(../../images/blue-folder-tree.png) !important;}
+.zui-lovtree {background-image: url(../../images/ui-scroll-pane-tree.png) !important;}
+.zui-captcha {background-image: url(../../images/captcha.png) !important;}
+
+/*
+ * DesignerItems 
+ */
+#DesignerItems items {position: absolute; width: 100%; height: 100%; overflow: auto; direction: ltr;}
+#DesignerItems items item {position: relative; display: block; padding: 4px; }
+
+/*
+ * DesignerEditor Code Mirror
+ */
+#DesignerEditor .CodeMirror {border: 1px solid gray; height: 100%;}
+#DesignerEditor .CodeMirror * {line-height: 1.5em; font-family: monospace !important; font-size: 14px !important;}
+#DesignerEditor .CodeMirror-scroll {height: 100%}
+
+/*
+ * DesignerExpression Code Mirror
+ */
+#DesignerExpression .CodeMirror {height: 100%; border: 1px solid gray;}
+#DesignerExpression .CodeMirror * {line-height: 1.5em; font-family: monospace !important; font-size: 14px !important;}
+#DesignerExpression .CodeMirror-scroll {height: 100%}
+
+/*
+ * DesignerInspector
+ */
+#DesignerInspector table {font-size: 12px; border-collapse: collapse; width: 100%;  border: 1px solid #aaaaaa;}
+#DesignerInspector table td {padding: 4px; border: 1px dotted #aaaaaa; border-left: 0px; border-right: 0px;}
+#DesignerInspector table td input {width: 100%; border-width: 0; margin: 0; padding: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
+#DesignerInspector table td select {height: 100%; width: 100%; border-width: 0; margin: 0; padding: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
+#DesignerInspector table td textarea {-moz-appereance: none; padding: 0px; height: 15px; width: 100%; border-width: 0; margin: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none; resize: none;}
+
+/*
+ * zui selected
+ */
+.zui-selected-span {width: 5px; height: 5px; display: block; position: absolute; background: black;}
+.zui-selected-top {top: 0px;}
+.zui-selected-bottom {bottom: 0px;}
+.zui-selected-left {left: 0px;}
+.zui-selected-right {right: 0px;}
+.zui-selected-h-mid {left: 50%; margin-left: -3px;}
+.zui-selected-v-mid {top: 50%; margin-top: -3px;}
+
+/*
+ * zui multiselected
+ */
+.zui-mulitselected-span {width: 5px; height: 5px; display: block; position: absolute; background: gray;}
+.zui-mulitselected-top {top: 0px;}
+.zui-mulitselected-bottom {bottom: 0px;}
+.zui-mulitselected-left {left: 0px;}
+.zui-mulitselected-right {right: 0px;}

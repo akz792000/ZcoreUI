@@ -1,0 +1,84 @@
+<Z><E><![CDATA[var client = null;
+
+Chat.onFinalize(function() {
+  connect.focus();
+});
+
+connect.onClick(function() {
+  
+  	var randomString = function(length) {
+		var str = "";
+		var chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+		for (var i = 0; i < length; i++) {
+			str += chars[Math.floor(Math.random() * chars.length)];
+		}
+		return str;
+	}
+  
+	try {
+		client = new Messaging.Client('172.16.65.174', 10000, "AutoRemote-Car-" + randomString(5));
+	} catch (error) {
+		alert("Error:" + error);
+	}
+
+	client.onMessageArrived = function(msg) {
+        var obj = JSON.parse(msg.payloadString);
+      textarea.value(textarea.value() + '\n' + obj.user + ': ' + obj.value);
+    };
+
+	client.onConnectionLost = function() { 
+      	textarea.value(textarea.value() + '\n' + 'connection lost');
+      
+      	connect.disabled(false);
+      	connect.focus();
+		disconnect.disabled(true);
+      	text.disabled(true);
+      	user.disabled(false);
+
+	}
+
+	var connectOptions = new Object();
+	connectOptions.useSSL = false;
+	connectOptions.cleanSession = true;
+	//connectOptions.userName = "";
+	//connectOptions.password = "";
+	// on disconnect, clear the settings
+	connectOptions.willMessage = new Messaging.Message("");
+	connectOptions.willMessage.destinationName = "AutoRemote/" + "chat" + "/settings";
+	connectOptions.willMessage.retained = true;
+	connectOptions.keepAliveInterval = 3600;  // if no activity after one hour, disconnect
+	connectOptions.onSuccess = function() {	
+      textarea.value(textarea.value() + '\n' + 'connection connect successfully');
+   client.subscribe("AutoRemote/chat");
+      //setTimeout(function() {
+      text.disabled(false);
+        text.focus();
+        disconnect.disabled(false);
+      	user.disabled(true);
+        connect.disabled(true);
+         
+      //}, 100);
+	};
+	connectOptions.onFailure = function() { 
+      disconnect.disabled(true);
+      text.disabled(true);
+      user.disabled(false);      
+      connect.disabled(false);
+	}
+
+	client.connect(connectOptions);
+  
+});
+
+disconnect.onClick(function() {
+  client.disconnect();
+});
+
+text.onKeypress(function(e) {
+  if (e.which === 13) {
+	var msgObj = new Messaging.Message(JSON.stringify({ user: user.value(), value: text.value() }));
+	msgObj.destinationName = "AutoRemote/chat";
+	client.send(msgObj); 
+    text.clear();
+  }
+});]]></E><M><![CDATA[{"attributes":{"type":"form","id":"Chat","direction":"ltr","disabled":false,"height":369,"width":303,"top":160,"left":647,"cssClass":"","cssStyle":"","title":"Chat","position":"default","align":"default","options":["titlebar","draggable"],"icons":["close"]},"components":[{"attributes":{"type":"textarea","id":"textarea","value":"","direction":"inherit","disabled":false,"height":219,"width":289,"top":46,"left":5,"visible":true,"tabindex":-1,"cssClass":"","cssStyle":"","title":"","position":"default","readonly":true,"post":true,"sequence":0,"validators":["[]"],"maxlength":-1}},{"attributes":{"type":"button","id":"connect","value":"connect","disabled":false,"height":24,"width":100,"top":305,"left":31,"visible":true,"tabindex":0,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"label","id":"label0","value":"User:","direction":"inherit","disabled":false,"height":14,"width":42,"top":15,"left":10,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"button","id":"disconnect","value":"disconnect","disabled":true,"height":24,"width":100,"top":305,"left":161,"visible":true,"tabindex":1,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"text","id":"text","value":"","direction":"inherit","disabled":true,"height":22,"width":290,"top":273,"left":4,"visible":true,"tabindex":3,"cssClass":"","cssStyle":"","title":"","position":"default","readonly":false,"post":true,"sequence":0,"validators":["[]"],"maxlength":-1}},{"attributes":{"type":"text","id":"user","value":"guest","direction":"inherit","disabled":false,"height":22,"width":105,"top":13,"left":45,"visible":true,"tabindex":4,"cssClass":"","cssStyle":"","title":"","position":"default","readonly":false,"post":true,"sequence":0,"validators":["[]"],"maxlength":-1}}]}]]></M></Z>

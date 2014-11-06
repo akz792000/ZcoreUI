@@ -1,0 +1,61 @@
+<Z><E><![CDATA[user.onFinalize(function() {
+  userGrid.focus();  
+});
+
+var func = function(keyCode) {
+      switch (keyCode) {
+        //--> persist
+		case 43:
+          app.loadForm({
+            ui : '/form/userDialog',
+            service : '/portal/service/userDialog/params',
+            data : { userAction : 'persist', userId : 0 } 
+          });
+          break;
+        //--> merge  
+		case 42:
+          var row = userGrid.getSelectedRows();
+          if (row.length !== 1) 
+            app.box.show(app.message.msg('error'), app.message.msg('oneRow'));
+          else			
+            app.loadForm({ 
+              ui : '/form/userDialog',
+              service : '/portal/service/userDialog/params',
+              data : { userAction : 'merge', userId: row[0][0] } 
+            });  	        
+          break;
+        //--> remove  
+		case 45:
+          var row = userGrid.getSelectedRows();
+          if (row.length !== 1) 
+            app.box.show(app.message.msg('error'), app.message.msg('oneRow'));
+          else			
+            app.loadForm({ 
+              ui : '/form/userDialog',
+              service : '/portal/service/userDialog/params',              
+              data : { userAction : 'remove', userId: row[0][0] }
+            });  	          
+          break;          
+      }  
+}
+
+userGrid
+	.onPersistClick(function() {
+      func(43);
+	})
+	.onMergeClick(function() {  
+      func(42);
+  	})
+	.onRemoveClick(function() { 
+      func(45);
+	})
+    .onKeypress(function(e) {
+      switch (e.which) {
+		case 43:
+		case 42:          
+		case 45:
+          	func(e.which);
+        	break;
+      }
+    })
+]]></E><M><![CDATA[{"attributes":{"type":"form","id":"user","direction":"inherit","disabled":false,"height":449,"width":725,"top":167,"left":312,"cssClass":"","cssStyle":"","title":"${user.title}","position":"default","align":"default","options":["titlebar","draggable"],"icons":["close","refresh","help"]},"components":[{"attributes":{"type":"grid","id":"userGrid","value":"","direction":"inherit","disabled":false,"height":417,"width":721,"top":0,"left":0,"visible":true,"tabindex":1,"cssClass":"","cssStyle":"","title":"","position":"left top","align":"client","post":false,"sequence":0,"validators":["[]"],"data":[""],"service":"/portal/service/user/userGrid","limitPage":10,"multiSelected":true,"showNumber":true,"items":["[{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"0\"","\"width\":100","\"title\":\"${id}\"","\"length\":60","\"filter\":false","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"1\"","\"width\":120","\"title\":\"${username}\"","\"length\":60","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"2\"","\"width\":120","\"title\":\"${enabled}\"","\"length\":60","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"3\"","\"width\":160","\"title\":\"${accountNonLocked}\"","\"length\":20","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"4\"","\"width\":200","\"title\":\"${accountLockedDue}\"","\"length\":20","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"5\"","\"width\":180","\"title\":\"${accountNonExpired}\"","\"length\":60","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"6\"","\"width\":180","\"title\":\"${accountExpiredDate}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"7\"","\"width\":180","\"title\":\"${credentialsNonExpired}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"8\"","\"width\":180","\"title\":\"${credentialsExpiredDate}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}]"],"filterShow":true,"sortShow":true,"orderShow":true,"persistCaption":"default","mergeCaption":"default","removeCaption":"default","orderByItem":"","orderByItemSort":"asc","refreshOnRender":true}}]}]]></M></Z>

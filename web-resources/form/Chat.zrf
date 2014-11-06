@@ -1,0 +1,84 @@
+<Z><E><![CDATA[var client = null;
+
+Chat.onFinalize(function() {
+  connect.focus();
+});
+
+connect.onClick(function() {
+  
+  	var randomString = function(length) {
+		var str = "";
+		var chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+		for (var i = 0; i < length; i++) {
+			str += chars[Math.floor(Math.random() * chars.length)];
+		}
+		return str;
+	}
+  
+	try {
+		client = new Messaging.Client('172.16.65.174', 10000, "AutoRemote-Car-" + randomString(5));
+	} catch (error) {
+		alert("Error:" + error);
+	}
+
+	client.onMessageArrived = function(msg) {
+        var obj = JSON.parse(msg.payloadString);
+      textarea.value(textarea.value() + '\n' + obj.user + ': ' + obj.value);
+    };
+
+	client.onConnectionLost = function() { 
+      	textarea.value(textarea.value() + '\n' + 'connection lost');
+      
+      	connect.disabled(false);
+      	connect.focus();
+		disconnect.disabled(true);
+      	text.disabled(true);
+      	user.disabled(false);
+
+	}
+
+	var connectOptions = new Object();
+	connectOptions.useSSL = false;
+	connectOptions.cleanSession = true;
+	//connectOptions.userName = "";
+	//connectOptions.password = "";
+	// on disconnect, clear the settings
+	connectOptions.willMessage = new Messaging.Message("");
+	connectOptions.willMessage.destinationName = "AutoRemote/" + "chat" + "/settings";
+	connectOptions.willMessage.retained = true;
+	connectOptions.keepAliveInterval = 3600;  // if no activity after one hour, disconnect
+	connectOptions.onSuccess = function() {	
+      textarea.value(textarea.value() + '\n' + 'connection connect successfully');
+   client.subscribe("AutoRemote/chat");
+      //setTimeout(function() {
+      text.disabled(false);
+        text.focus();
+        disconnect.disabled(false);
+      	user.disabled(true);
+        connect.disabled(true);
+         
+      //}, 100);
+	};
+	connectOptions.onFailure = function() { 
+      disconnect.disabled(true);
+      text.disabled(true);
+      user.disabled(false);      
+      connect.disabled(false);
+	}
+
+	client.connect(connectOptions);
+  
+});
+
+disconnect.onClick(function() {
+  client.disconnect();
+});
+
+text.onKeypress(function(e) {
+  if (e.which === 13) {
+	var msgObj = new Messaging.Message(JSON.stringify({ user: user.value(), value: text.value() }));
+	msgObj.destinationName = "AutoRemote/chat";
+	client.send(msgObj); 
+    text.clear();
+  }
+});]]></E><M><![CDATA[{"a":["form","Chat",1,0,369,303,160,647,"","","Chat",0,0,[0,3],[0]],"c":[{"a":["textarea","textarea","",0,0,219,289,46,5,1,-1,"","","",0,1,1,0,[],-1]},{"a":["button","connect","connect",0,24,100,305,31,1,0,"","","",0]},{"a":["label","label0","User:",0,0,14,42,15,10,1,"","","",0]},{"a":["button","disconnect","disconnect",1,24,100,305,161,1,1,"","","",0]},{"a":["text","text","",0,1,22,290,273,4,1,3,"","","",0,0,1,0,[],-1]},{"a":["text","user","guest",0,0,22,105,13,45,1,4,"","","",0,0,1,0,[],-1]}]}]]></M></Z>

@@ -1,0 +1,61 @@
+<Z><E><![CDATA[user.onFinalize(function() {
+  userGrid.focus();  
+});
+
+var func = function(keyCode) {
+      switch (keyCode) {
+        //--> persist
+		case 43:
+          app.loadForm({
+            ui : '/form/userDialog',
+            service : '/portal/service/userDialog/params',
+            data : { userAction : 'persist', userId : 0 } 
+          });
+          break;
+        //--> merge  
+		case 42:
+          var row = userGrid.getSelectedRows();
+          if (row.length !== 1) 
+            app.box.show(app.message.msg('error'), app.message.msg('oneRow'));
+          else			
+            app.loadForm({ 
+              ui : '/form/userDialog',
+              service : '/portal/service/userDialog/params',
+              data : { userAction : 'merge', userId: row[0][0] } 
+            });  	        
+          break;
+        //--> remove  
+		case 45:
+          var row = userGrid.getSelectedRows();
+          if (row.length !== 1) 
+            app.box.show(app.message.msg('error'), app.message.msg('oneRow'));
+          else			
+            app.loadForm({ 
+              ui : '/form/userDialog',
+              service : '/portal/service/userDialog/params',              
+              data : { userAction : 'remove', userId: row[0][0] }
+            });  	          
+          break;          
+      }  
+}
+
+userGrid
+	.onPersistClick(function() {
+      func(43);
+	})
+	.onMergeClick(function() {  
+      func(42);
+  	})
+	.onRemoveClick(function() { 
+      func(45);
+	})
+    .onKeypress(function(e) {
+      switch (e.which) {
+		case 43:
+		case 42:          
+		case 45:
+          	func(e.which);
+        	break;
+      }
+    })
+]]></E><M><![CDATA[{"a":["form","user",0,0,449,725,167,312,"","","${user.title}",0,0,[0,3],[0,1,2]],"c":[{"a":["grid","userGrid","",0,0,417,721,0,0,1,1,"","","",1,5,0,0,[],,"/portal/service/user/userGrid",10,1,1,[[100,"${id}",60,0,1,1],[120,"${username}",60,1,1,1],[120,"${enabled}",60,1,1,1],[160,"${accountNonLocked}",20,1,1,1],[200,"${accountLockedDue}",20,1,1,1],[180,"${accountNonExpired}",60,1,1,1],[180,"${accountExpiredDate}",30,1,1,1],[180,"${credentialsNonExpired}",30,1,1,1],[180,"${credentialsExpiredDate}",30,1,1,1]],1,1,1,"default","default","default","",0,1]}]}]]></M></Z>

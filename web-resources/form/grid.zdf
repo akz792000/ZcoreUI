@@ -1,0 +1,40 @@
+<Z><E><![CDATA[grid.onFinalize(function() {  
+  partabGrid.focus(); 
+});
+
+partabGrid
+	.onRefreshClick(function() {
+  		parameterGrid.refresh();		
+	})		
+	.onRowClick(function() {
+  		parameterGrid.refresh();
+	})
+	.onHoverClick(function() {
+  		parameterGrid.refresh();
+	});
+   
+parameterGrid.onServiceParams(function() {
+  	return {
+  		partabGrid : partabGrid.getHoverRows()
+	}
+});
+
+partabMultiselect.onClick(function() {
+  parameterMultiselect.refresh();
+});
+
+parameterMultiselect.onServiceParams(function() {
+  	return {
+  		partabMultiselect : partabMultiselect.value()
+	}
+});
+
+
+sample.onClick(function() {
+    grid.call({
+      action : '/portal/service/grid/sample',
+      success: function(data, textStatus, jqXHR) {				
+        app.bar.show('success', app.message.msg('success'));
+      }	
+    });
+});]]></E><M><![CDATA[{"attributes":{"type":"form","id":"grid","direction":"inherit","disabled":false,"height":450,"width":841,"top":130,"left":402,"cssClass":"","cssStyle":"","title":"${user.title}","position":"default","align":"default","options":["titlebar","draggable"],"icons":["close","refresh","help"]},"components":[{"attributes":{"type":"grid","id":"partabGrid","value":"","direction":"inherit","disabled":false,"height":195,"width":379,"top":10,"left":27,"visible":true,"tabindex":1,"cssClass":"","cssStyle":"","title":"","position":"default","align":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"/portal/service/grid/partabGrid","limitPage":3,"multiSelected":false,"showNumber":true,"items":["[{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"0\"","\"width\":100","\"title\":\"${id}\"","\"length\":60","\"filter\":false","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"1\"","\"width\":120","\"title\":\"${username}\"","\"length\":60","\"filter\":true","\"sort\":true","\"order\":true}}]"],"filterShow":true,"sortShow":true,"orderShow":true,"persistCaption":"","mergeCaption":"","removeCaption":"","orderByItem":"","orderByItemSort":"asc","refreshOnRender":true}},{"attributes":{"type":"grid","id":"parameterGrid","value":"","direction":"inherit","disabled":false,"height":161,"width":377,"top":212,"left":27,"visible":true,"tabindex":2,"cssClass":"","cssStyle":"","title":"","position":"default","align":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"/portal/service/grid/parameterGrid","limitPage":3,"multiSelected":false,"showNumber":false,"items":["[{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"0\"","\"width\":80","\"title\":\"id\"","\"length\":30","\"filter\":false","\"sort\":false","\"order\":false}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"1\"","\"width\":80","\"title\":\"tbl\"","\"length\":30","\"filter\":false","\"sort\":false","\"order\":false}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"2\"","\"width\":80","\"title\":\"dsc\"","\"length\":30","\"filter\":false","\"sort\":false","\"order\":false}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"3\"","\"width\":80","\"title\":\"item\"","\"length\":30","\"filter\":false","\"sort\":false","\"order\":false}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"4\"","\"width\":80","\"title\":\"mode\"","\"length\":30","\"filter\":false","\"sort\":false","\"order\":false}}]"],"filterShow":false,"sortShow":false,"orderShow":false,"persistCaption":"","mergeCaption":"","removeCaption":"","orderByItem":"","orderByItemSort":"asc","refreshOnRender":false}},{"attributes":{"type":"button","id":"sample","value":"sample","disabled":false,"height":24,"width":100,"top":382,"left":23,"visible":true,"tabindex":3,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"multiselect","id":"partabMultiselect","value":[""],"direction":"inherit","disabled":false,"height":30,"width":200,"top":22,"left":458,"visible":true,"tabindex":4,"cssClass":"","cssStyle":"","title":"","position":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"","header":"default","multiple":false,"listHeight":100,"selectedList":0}},{"attributes":{"type":"grid","id":"parameterMultiselect","value":"","direction":"inherit","disabled":false,"height":165,"width":348,"top":215,"left":421,"visible":true,"tabindex":5,"cssClass":"","cssStyle":"","title":"","position":"default","align":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"/portal/service/grid/parameterMultiselect","limitPage":10,"multiSelected":false,"showNumber":false,"items":["[{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"0\"","\"width\":80","\"title\":\"\"","\"length\":30","\"filter\":false","\"sort\":false","\"order\":false}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"1\"","\"width\":80","\"title\":\"\"","\"length\":30","\"filter\":false","\"sort\":false","\"order\":false}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"2\"","\"width\":80","\"title\":\"\"","\"length\":30","\"filter\":false","\"sort\":false","\"order\":false}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"3\"","\"width\":80","\"title\":\"\"","\"length\":30","\"filter\":false","\"sort\":false","\"order\":false}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"4\"","\"width\":80","\"title\":\"\"","\"length\":30","\"filter\":false","\"sort\":false","\"order\":false}}]"],"filterShow":false,"sortShow":false,"orderShow":false,"persistCaption":"","mergeCaption":"","removeCaption":"","orderByItem":"","orderByItemSort":"asc","refreshOnRender":true}}]}]]></M></Z>

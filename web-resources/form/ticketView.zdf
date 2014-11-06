@@ -1,0 +1,75 @@
+<Z><E><![CDATA[grid
+	.onRefreshClick(function() {
+  		gridAction.refresh();		
+	})		
+	.onRowClick(function() {
+  		gridAction.refresh();
+	})
+	.onHoverClick(function() {
+  		gridAction.refresh();
+	})
+	.onPersistClick(function() {
+      func(43);
+	})
+    .onKeypress(function(e) {
+      switch (e.which) {
+		case 43:
+		case 42:          
+		case 45:
+          	func(e.which);
+        	break;
+      }
+    });
+
+gridAction.onServiceParams(function() {
+  	return {
+  		grid : grid.getHoverRows()
+	}
+});
+
+
+
+var func = function(keyCode) {
+      switch (keyCode) {
+        //--> persist
+		case 43:
+          app.loadForm({
+            ui : '/form/ticket',
+            service : '/portal/service/ticket/params',
+
+          });
+          break;
+        //--> merge  
+		case 42: 	        
+          break;
+        //--> remove  
+		case 45:	          
+          break;      
+        //--> add action  
+        case 46: 
+          app.loadForm({
+              ui : '/form/newAction',
+            service : '/portal/service/action/params',
+                        data : { ticketId : grid.getHoverRows()[0][0] } 
+          });
+      }  
+}
+
+
+
+
+gridAction
+	.onPersistClick(function() {
+      func(46)
+	})
+    .onKeypress(function(e) {
+      switch (e.which) {
+		case 43:
+		case 42:          
+		case 45:
+          	func(e.which);
+        	break;
+      }
+    })
+
+]]></E><M><![CDATA[{"attributes":{"type":"form","id":"ticketView","direction":"inherit","disabled":false,"height":523,"width":624,"top":138,"left":527,"cssClass":"","cssStyle":"","title":"DesignerForm","position":"default","align":"default","options":["titlebar","draggable"],"icons":["close"]},"components":[{"attributes":{"type":"grid","id":"grid","value":"","direction":"inherit","disabled":false,"height":200,"width":598,"top":7,"left":12,"visible":true,"tabindex":0,"cssClass":"","cssStyle":"","title":"","position":"default","align":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"/portal/service/ticketView/grid","limitPage":10,"multiSelected":false,"showNumber":false,"items":["[{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"0\"","\"width\":80","\"title\":\"${id}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"1\"","\"width\":150","\"title\":\"${incident}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"2\"","\"width\":80","\"title\":\"${incidentDesc}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"3\"","\"width\":200","\"title\":\"${status}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}]"],"filterShow":true,"sortShow":true,"orderShow":true,"persistCaption":"default","mergeCaption":"","removeCaption":"","orderByItem":"","orderByItemSort":"asc","refreshOnRender":true}},{"attributes":{"type":"grid","id":"gridAction","value":"","direction":"inherit","disabled":false,"height":248,"width":597,"top":230,"left":12,"visible":true,"tabindex":1,"cssClass":"","cssStyle":"","title":"","position":"default","align":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"/portal/service/ticketView/gridAction","limitPage":10,"multiSelected":false,"showNumber":false,"items":["[{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"0\"","\"width\":80","\"title\":\"${id}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"1\"","\"width\":150","\"title\":\"${actionType}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"2\"","\"width\":100","\"title\":\"${description}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"3\"","\"width\":80","\"title\":\"${status}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}]"],"filterShow":false,"sortShow":false,"orderShow":false,"persistCaption":"default","mergeCaption":"","removeCaption":"","orderByItem":"","orderByItemSort":"asc","refreshOnRender":false}}]}]]></M></Z>

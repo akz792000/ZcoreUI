@@ -1,0 +1,4 @@
+1.go to addon-sdk-1.16/bin and call activate method
+2.go to ZcoreUI directory
+3.cfx run (for test)
+4.cfx xpi (create xpi file)

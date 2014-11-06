@@ -1,0 +1,10 @@
+1.copy 
+	jquery-ui-1.10.4\js\jquery-1.10.2.js --> jquery
+	jquery-ui-1.10.4\development-bundle\ui --> jquery
+
+2.copy
+	jquery-ui-themes-1.10.4\themes\redmond\images --> css\redmond
+	jquery-ui-themes-1.10.4\themes\redmond\jquery-ui.min.css --> css\redmond	
+	
+3.jQuery UI just have jQuery and doesn't have jQuery.min.js and therefore 
+we download the latest and nearest of jQuery.min.js download and copy in jquery folder 	

@@ -1,0 +1,39 @@
+<Z><E><![CDATA[services.onClick(function(v) {
+  	spel.clear();
+  	methods.clear(); 
+    spel.disabled(true);
+  	methods.disabled(true);
+  	ok.disabled(true);
+	permission.refresh({ 
+      data : {
+        services : services.value()  
+      },
+      success : function() {
+        methods.disabled(false);
+      }
+    });
+});
+
+methods.onClick(function(v) {
+  	spel.clear();
+	permission.refresh({ 
+      data : permission.sequential(),
+      success : function() {
+        spel.disabled(false);
+        ok.disabled(false);
+      }
+    });
+});
+
+ok.onClick(function() {
+  permission.call({
+    action : 'change',
+    success: function(data, textStatus, jqXHR) {		
+    permission.clear();
+    spel.disabled(true);
+  	methods.disabled(true);
+  	ok.disabled(true);
+      app.bar.show('success', app.message.msg('success'));
+    }	
+  });
+});]]></E><M><![CDATA[{"attributes":{"type":"form","id":"permission","direction":"inherit","disabled":false,"height":523,"width":714,"top":139,"left":429,"cssClass":"","cssStyle":"","title":"${permission.title}","position":"default","align":"default","options":["titlebar","draggable"],"icons":["close","refresh","partial"]},"components":[{"attributes":{"type":"label","id":"lblServices","value":"${permission.services}","direction":"inherit","disabled":false,"height":14,"width":87,"top":320,"left":14,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"label","id":"lblMethods","value":"${permission.methods}","direction":"inherit","disabled":false,"height":14,"width":78,"top":320,"left":365,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"label","id":"lblSpel","value":"${permission.spel}","direction":"inherit","disabled":false,"height":14,"width":85,"top":361,"left":14,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"multiselect","id":"services","value":[""],"direction":"ltr","disabled":false,"height":30,"width":208,"top":314,"left":110,"visible":true,"tabindex":1,"cssClass":"","cssStyle":"","title":"","position":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"","header":"default","multiple":false,"listHeight":100,"selectedList":1}},{"attributes":{"type":"multiselect","id":"methods","value":[""],"direction":"ltr","disabled":false,"height":30,"width":208,"top":314,"left":454,"visible":true,"tabindex":2,"cssClass":"","cssStyle":"","title":"","position":"default","post":true,"sequence":1,"validators":["[]"],"data":[""],"service":"","header":"default","multiple":false,"listHeight":100,"selectedList":1}},{"attributes":{"type":"textarea","id":"spel","value":"spel","direction":"ltr","disabled":false,"height":52,"width":523,"top":358,"left":110,"visible":true,"tabindex":2,"cssClass":"","cssStyle":"","title":"","position":"default","readonly":false,"post":true,"sequence":2,"validators":["[]"],"maxlength":-1}},{"attributes":{"type":"button","id":"ok","value":"${ok}","disabled":false,"height":24,"width":243,"top":455,"left":240,"visible":true,"tabindex":3,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"grid","id":"grid","value":"","direction":"inherit","disabled":false,"height":262,"width":692,"top":10,"left":10,"visible":true,"tabindex":4,"cssClass":"","cssStyle":"","title":"","position":"default","align":"default","post":true,"sequence":0,"validators":["[]"],"data":[""],"service":"/portal/service/permission/grid","limitPage":10,"multiSelected":false,"showNumber":false,"items":["[{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"0\"","\"width\":80","\"title\":\"${id}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"1\"","\"width\":150","\"title\":\"${method}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"2\"","\"width\":150","\"title\":\"${permission.grid.titles.name}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}","{\"attributes\":{\"type\":\"gridItem\"","\"value\":\"3\"","\"width\":250","\"title\":\"${permission.grid.titles.spel}\"","\"length\":30","\"filter\":true","\"sort\":true","\"order\":true}}]"],"filterShow":true,"sortShow":true,"orderShow":true,"persistCaption":"","mergeCaption":"","removeCaption":"","orderByItem":"","orderByItemSort":"asc","refreshOnRender":true}}]}]]></M></Z>

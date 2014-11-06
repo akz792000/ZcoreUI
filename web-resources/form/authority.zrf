@@ -1,0 +1,28 @@
+<Z><E><![CDATA[  authorityTree
+	.onPersist(function(o) {
+      app.loadForm({
+        ui : '/form/authorityDialog',
+        service : '/portal/service/authorityDialog/params',
+        data : {
+    	  	authorityAction: 'persist', 
+      		authorityParent: o.attr('id')
+      }});
+  	})
+	.onMerge(function(o) {
+    	app.loadForm({
+          ui : '/form/authorityDialog',
+          service : '/portal/service/authorityDialog/params',         
+          data : {
+			authorityAction: 'merge', 
+			authorityId: o.attr('id')
+        }});
+  	})
+	.onRemove(function(o) {
+    	app.loadForm({ 
+          ui : '/form/authorityDialog',
+          service : '/portal/service/authorityDialog/params',          
+          data : {
+			authorityAction: 'remove', 
+			authorityId: o.attr('id')
+        }});
+  	});]]></E><M><![CDATA[{"a":["form","authority",0,0,222,300,289,650,"","","${authority.title}",0,0,[0,3],[0,1,2]],"c":[{"a":["tree","authorityTree","",0,0,190,296,0,0,1,0,"","","",1,5,1,0,[],,"/portal/service/authority/authorityTree",0]}]}]]></M></Z>

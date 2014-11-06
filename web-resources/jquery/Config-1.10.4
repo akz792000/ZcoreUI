@@ -1,0 +1,44 @@
+===============================================================================
+1:
+
+change jquery.ui.mouse.js 
+comment line 102 event.preventDefault();
+
+--> Cause :
+because when you enter id value or something else and then focus the component the value didn't change and this is because of event.preventDefault().
+
+
+-->for as much as jquery.ui.mouse.min.js use in runtime therefore instead of using jquery.ui.mouse.min.js we first change jquery.ui.mouse.js and then
+change it
+
+=======================================================================================
+2:
+
+add this snipped code in jquery-1.9.1.js in acceptData fuction for prevent error elem undefined when resize form,
+but after update to jqery-1.11.1 it seems that this error doesn't appear any more. therefor I remove it.
+
+$.acceptData = function( elem ) {
+	// Do not set data on non-element because it will not be cleared (#8335).
+	//</ZANDI>
+	if (elem === undefined) return false;
+	//</ZANDI>
+	if ( elem.nodeType && elem.nodeType !== 1 && elem.nodeType !== 9 ) {
+		return false;
+	}
+
+	var noData = elem.nodeName && jQuery.noData[ elem.nodeName.toLowerCase() ];
+
+	// nodes accept data unless otherwise specified; rejection can be conditional
+	return !noData || noData !== true && elem.getAttribute("classid") === noData;
+}	
+	
+=======================================================================================
+3:	
+	
+in jquery.ui.dialog.js for prevent focus on the tabbed element
+
+for as much as jquery.ui.dialog.min.js use in runtime therefore I try to add return statement in zcore.app.js
+	 
+$.ui.dialog.prototype._focusTabbable = function() {
+	return;
+}

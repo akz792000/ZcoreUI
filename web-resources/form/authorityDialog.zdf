@@ -1,0 +1,24 @@
+<Z><E><![CDATA[  authorityDialog.onFinalize(function() {
+    authorityName.disabled(authorityAction.value() == 'remove');
+  });
+  ok.onClick(function() {
+    authorityDialog.call({
+      action : '/portal/service/authorityDialog/' + authorityAction.value(),
+      success: function(data) {				
+        app.bar.show('success', app.message.msg('success'));
+        var tree = app.forms.authority.elements.authorityTree;
+        switch (authorityAction.value()) {
+          case 'persist':
+            tree.persist_node(data);
+            break;
+          case 'merge':
+            tree.merge_node(data);
+            break;
+          case 'remove':
+            tree.remove_node(data);
+            break;
+        }        
+        authorityDialog.close();
+      }	
+    });     
+  });]]></E><M><![CDATA[{"attributes":{"type":"form","id":"authorityDialog","direction":"inherit","disabled":false,"height":163,"width":277,"top":309,"left":597,"cssClass":"","cssStyle":"","title":"${authorityDialog.title}","position":"center center","align":"default","options":["titlebar","modal","draggable"],"icons":["close","help"]},"components":[{"attributes":{"type":"hidden","id":"authorityId","value":"authorityId","top":5,"left":5,"post":true,"sequence":0,"validators":["[]"]}},{"attributes":{"type":"hidden","id":"authorityParent","value":"authorityParent","top":5,"left":33,"post":true,"sequence":0,"validators":["[]"]}},{"attributes":{"type":"hidden","id":"authorityAction","value":"authorityAction","top":4,"left":63,"post":true,"sequence":0,"validators":["[]"]}},{"attributes":{"type":"label","id":"label0","value":"${authorityDialog.authorityName}","direction":"inherit","disabled":false,"height":14,"width":69,"top":39,"left":33,"visible":true,"cssClass":"","cssStyle":"","title":"","position":"default"}},{"attributes":{"type":"text","id":"authorityName","value":"authorityName","direction":"ltr","disabled":false,"height":22,"width":124,"top":34,"left":118,"visible":true,"tabindex":1,"cssClass":"","cssStyle":"","title":"","position":"default","readonly":false,"post":true,"sequence":0,"validators":["[]"],"maxlength":-1}},{"attributes":{"type":"button","id":"ok","value":"${ok}","disabled":false,"height":24,"width":214,"top":88,"left":31,"visible":true,"tabindex":2,"cssClass":"","cssStyle":"","title":"","position":"default"}}]}]]></M></Z>

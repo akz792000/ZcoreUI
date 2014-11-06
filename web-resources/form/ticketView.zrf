@@ -1,0 +1,75 @@
+<Z><E><![CDATA[grid
+	.onRefreshClick(function() {
+  		gridAction.refresh();		
+	})		
+	.onRowClick(function() {
+  		gridAction.refresh();
+	})
+	.onHoverClick(function() {
+  		gridAction.refresh();
+	})
+	.onPersistClick(function() {
+      func(43);
+	})
+    .onKeypress(function(e) {
+      switch (e.which) {
+		case 43:
+		case 42:          
+		case 45:
+          	func(e.which);
+        	break;
+      }
+    });
+
+gridAction.onServiceParams(function() {
+  	return {
+  		grid : grid.getHoverRows()
+	}
+});
+
+
+
+var func = function(keyCode) {
+      switch (keyCode) {
+        //--> persist
+		case 43:
+          app.loadForm({
+            ui : '/form/ticket',
+            service : '/portal/service/ticket/params',
+
+          });
+          break;
+        //--> merge  
+		case 42: 	        
+          break;
+        //--> remove  
+		case 45:	          
+          break;      
+        //--> add action  
+        case 46: 
+          app.loadForm({
+              ui : '/form/newAction',
+            service : '/portal/service/action/params',
+                        data : { ticketId : grid.getHoverRows()[0][0] } 
+          });
+      }  
+}
+
+
+
+
+gridAction
+	.onPersistClick(function() {
+      func(46)
+	})
+    .onKeypress(function(e) {
+      switch (e.which) {
+		case 43:
+		case 42:          
+		case 45:
+          	func(e.which);
+        	break;
+      }
+    })
+
+]]></E><M><![CDATA[{"a":["form","ticketView",0,0,523,624,138,527,"","","DesignerForm",0,0,[0,3],[0]],"c":[{"a":["grid","grid","",0,0,200,598,7,12,1,0,"","","",0,0,1,0,[],,"/portal/service/ticketView/grid",10,0,0,[[80,"${id}",30,1,1,1],[150,"${incident}",30,1,1,1],[80,"${incidentDesc}",30,1,1,1],[200,"${status}",30,1,1,1]],1,1,1,"default","","","",0,1]},{"a":["grid","gridAction","",0,0,248,597,230,12,1,1,"","","",0,0,1,0,[],,"/portal/service/ticketView/gridAction",10,0,0,[[80,"${id}",30,1,1,1],[150,"${actionType}",30,1,1,1],[100,"${description}",30,1,1,1],[80,"${status}",30,1,1,1]],0,0,0,"default","","","",0,0]}]}]]></M></Z>

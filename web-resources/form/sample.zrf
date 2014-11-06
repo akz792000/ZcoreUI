@@ -1,0 +1,8 @@
+<Z><E><![CDATA[submit.onClick(function() {
+  sample.call({    
+    action : 'test',
+    success: function() {				
+      app.bar.show('success', app.message.msg('success'));
+    }	
+  });
+});]]></E><M><![CDATA[{"a":["form","sample",0,0,177,284,172,677,"","","sample",0,0,[0],[0]],"c":[{"a":["button","submit","submit",0,24,100,59,89,1,0,"","","",5]}]}]]></M></Z>

@@ -1,0 +1,106 @@
+1.when you drag or resize the component gave you size in Float
+but I'm work with Int as resulting of this situation the positioning 
+of component in designtime and runtime maybe difference.
+
+
+Array.prototype.trim = function() {
+  //--> do someting
+}
+
+now when you user
+
+var x = [];
+
+for (var i in x)
+  alert(i); //--> print trim
+  
+for (var i = 0; i < x.length; i++)
+  alert(i); //--> print nothing   
+  
+  
+abstractMethod : function(args) {
+	var 
+		result = undefined,
+		T = this.__;
+	for (var item in this._queue) {
+		eval("var func = " + this._queue[item]);
+		result = func.apply(this, args);
+	}					
+	return result;
+}  
+
+abstractMethod : function(args) {
+	var result = undefined;
+	(function(that, T) {
+		for (var item in that._queue) {	
+			//--> change the scope  
+			eval("var func = " + that._queue[item]);
+			//--> execute 
+			result = func.apply(that, args);			
+		}
+	})(this, this.__);
+	return result;
+}
+
+//------------------------------------------------------------
+
+var L = navigator.plugins.length;
+
+document.write(
+  L.toString() + " Plugin(s)<br>" +
+  "Name | Filename | description<br>"
+);
+
+for(var i = 0; i < L; i++) {
+  document.write(
+    navigator.plugins[i].name +
+    " | " +
+    navigator.plugins[i].filename +
+    " | " +
+    navigator.plugins[i].description +
+    " | " +
+    navigator.plugins[i].version +
+    "<br>"
+  );
+}
+
+//------------------------------------------------------------
+if (mode == 'P') {
+	value = value.match(/\/\/<PARTIAL>[\s\S]*?\/\/<\/PARTIAL>/g, '');
+	value = value != null ? value.join('\n') : '';
+}
+
+
+
+To hold text inside the tags:
+
+var res = string.match(/<BEGIN>([\s\S]*?)<\/END>/g);
+
+To remove text inside the tags:
+
+var res = string.replace(/([\s\S]*?)<BEGIN>[\s\S]*?<\/END>/g, '$1');
+
+To remove text outside the tags:
+
+var res = string.replace(/<BEGIN>[\s\S]*?<\/END>/g, '');
+
+
+//------------------------------------------------------------
+var 
+	T = this.__,
+	direction = v || T.direction();	
+if (direction === 'inherit') {
+	if (T instanceof _.form)
+		return $.ZAP.orientation();
+	else
+		return T.parent.orientation();
+}						
+return $.ZAP.orientation(direction);
+
+//------------------------------------------------------------
+isRender : {
+					method : function() {
+						return this.__.o.is(':ui-dialog');
+					}
+				},
+  

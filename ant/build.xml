@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="compressor" default="build.all" basedir=".">
+
+	<property name="src" value="../web-resources/js/zcore" />
+
+	<property name="dist" value="build" />
+
+	<target name="init">
+		<echo message="${java.home}" />
+		<taskdef resource="net/sf/antcontrib/antlib.xml" classpath="lib/ant-contrib-1.0b3.jar" />
+	</target>
+	
+	<target name="clean">
+		<echo message="${dist}" />
+		<delete dir="${dist}"/>
+	</target>	
+
+	<target name="compress">
+		<property name="in" value="${compress.file}" />
+		<propertyregex property="out" input="${compress.file}" regexp="${compress.regexp}" replace="${compress.replace}" />
+		<echo message="${in}" />
+		<java jar="lib/yuicompressor-2.4.7.jar" fork="true">
+			<arg file="${in}" />
+			<arg value="-o" />
+			<arg file="${out}" />
+			<arg value="--charset"/>
+			<arg value="utf-8"/>
+		</java>
+	</target>
+
+	<target name="build.dir">
+		<!-- concat & delete -->
+		<echo>Concat files ...</echo>
+		<for param="filename">
+			<path>
+				<fileset dir="${dist.path}">
+					<include name="${dist.include}" />
+					<exclude name="${dist.exclude}" />
+				</fileset>
+			</path>
+			<sequential>
+				<concat destfile="${dist.path}/${dist.output}" fixlastline="true" append="true" >
+					<fileset file="@{filename}" />
+				</concat>
+				<delete>
+					<fileset file="@{filename}" />		
+				</delete>				
+			</sequential>
+		</for>	
+		<!-- compress -->			
+		<if>
+			<equals arg1="${dist.compress}" arg2="true" />
+			<then>	
+				<echo>Compress files ...</echo>
+				<antcall target="compress">
+					<param name="compress.file" value="${dist.path}/${dist.output}" />
+					<param name="compress.regexp" value=".js$" />
+					<param name="compress.replace" value=".min.js" />
+				</antcall>
+				<delete>
+					<fileset file="${dist.path}/${dist.output}" />		
+				</delete>
+			</then>
+		</if>				
+	</target>
+	
+	<target name="build.all" depends="clean, init">
+
+		<!-- copy directory -->
+		<echo message="${src}" />
+		<copydir src="${src}" dest="${dist}"/>
+		
+		<!-- zcore design -->
+		<echo message="build zcore design" />
+		<antcall target="build.dir">
+			<param name="dist.path" value="${dist}/component/design" />
+			<param name="dist.include" value="**/zcore.object.factory.js" />
+			<param name="dist.output" value="zcore.design.js" />
+			<param name="dist.compress" value="false" />
+		</antcall>	
+		<antcall target="build.dir">
+			<param name="dist.path" value="${dist}/component/design" />
+			<param name="dist.include" value="**/*.js" />
+			<param name="dist.exclude" value="zcore.design.js" />
+			<param name="dist.output" value="zcore.design.js" />
+			<param name="dist.compress" value="true" />
+		</antcall>	
+		<delete>
+			<dirset dir="${dist}/component/design"/>		
+		</delete>	
+		
+		<!-- zcore helper -->
+		<echo message="build zcore helper" />
+		<antcall target="build.dir">
+			<param name="dist.path" value="${dist}/component/helper" />
+			<param name="dist.include" value="**/*.js" />
+			<param name="dist.output" value="zcore.helper.js" />
+			<param name="dist.compress" value="true" />
+		</antcall>	
+		
+		<!-- zcore invoker -->
+		<echo message="build zcore invoker" />
+		<antcall target="build.dir">
+			<param name="dist.path" value="${dist}/component/invoker" />
+			<param name="dist.include" value="**/*.js" />
+			<param name="dist.output" value="zcore.invoker.js" />
+			<param name="dist.compress" value="true" />
+		</antcall>			
+
+		<!-- zcore run -->
+		<echo message="build zcore run" />
+		<antcall target="build.dir">
+			<param name="dist.path" value="${dist}/component/run" />
+			<param name="dist.include" value="**/zcore.object.factory.js" />
+			<param name="dist.output" value="zcore.run.js" />
+			<param name="dist.compress" value="false" />
+		</antcall>	
+		<antcall target="build.dir">
+			<param name="dist.path" value="${dist}/component/run" />
+			<param name="dist.include" value="**/*.js" />
+			<param name="dist.exclude" value="zcore.run.js" />
+			<param name="dist.output" value="zcore.run.js" />
+			<param name="dist.compress" value="true" />
+		</antcall>	
+		<delete>
+			<dirset dir="${dist}/component/run"/>		
+		</delete>		
+		
+	</target>
+
+</project>

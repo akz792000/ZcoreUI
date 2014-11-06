@@ -1,0 +1,217 @@
+/**
+ * 
+ * @author Ali Karimizandi
+ * @since 2012-2014 
+ * @version 1.0
+ *  
+ */
+
+* {margin: 0; font-family: tahoma, arial, helvetica, sans-serif !important; font-size: 11px;}
+
+/*
+ * select item stop being focused when click on body
+ */
+
+* {-webkit-user-select: none; -khtml-user-select: none; -moz-user-select: -moz-none; -o-user-select: none; user-select: none;}
+
+input {-webkit-user-select: text; -khtml-user-select: text; -moz-user-select: text; -o-user-select: text; user-select: text;}
+textarea {-webkit-user-select: text; -khtml-user-select: text; -moz-user-select: text; -o-user-select: text; user-select: text;}
+
+/*
+ * a	
+ */
+a, a:hover, a:visited, a:focus {
+	/* for remove firefox dotted outline of a */
+	border: 0; 
+	outline: 0;
+	text-decoration: none;}
+
+.ui-selectable-helper {z-index: 10000;}
+.ui-state-disabled {opacity: 0.65 !important;}
+.ui-widget-overlay{background:#aaa 50% 50% repeat-x;opacity:.3;filter:Alpha(Opacity=30)}
+
+.zui-state-hover {
+	opacity: 1 !important; 
+	moz-box-shadow: inset 0 0 1px #804000 !important; 
+	-webkit-box-shadow: inset 0 0 1px #804000 !important; 
+	box-shadow: inset 0 0 1px #804000 !important;
+	border-color: #804000 !important;
+}
+
+/*
+ * for remove Firefox's dotted outline on BUTTONS as well as links
+ * in multiselect we have button
+ */
+button::-moz-focus-inner {
+  border: 0;
+}
+
+
+.zui-border-style {
+	border: 1px solid #222222 !important;;
+}
+
+/* 
+ * dialog
+ */
+.ui-dialog {border: 0; padding: 0em; border-radius:0;}
+.ui-dialog .ui-dialog-title {float:none !important; display: block; text-align: center; width: 100%;}
+.ui-dialog .ui-dialog-titlebar {border-radius:0;}
+.ui-dialog .ui-dialog-content {border: 1px solid #222222; padding: 0;}
+.ui-dialog .ui-dialog-buttonpane { margin : 0px; border-width: 0 1px 1px 1px;}
+
+.ui-widget-content {color: #000000}
+
+.zui-form .ui-dialog-titlebar {height: 16px;}
+.zui-form .ui-dialog-titlebar .ui-dialog-title {position: absolute; width: 87%; /* width because of button in the titlebar */} 
+.zui-form .ui-dialog-titlebar .ui-dialog-titlebar-button {position: absolute; top: 12.5px; width: 20px; margin: -10px 0 0 0; padding: 1px; height: 20px;}
+
+/*
+ * helper
+ */
+#ZcoreBox {background-color: #F6FAFD;}
+
+/*
+ * form
+ */
+.zui-form {background: rgb(250, 250, 250);}
+.zui-form-selected {z-index: 999;}
+.zui-scroll-off {overflow: visible !important}
+
+/*
+ * tabs
+ */
+.ui-tabs .ui-tabs-panel {padding: 0.3em 0;}
+.ui-tabs .ui-tabs-nav {padding: 0.1em 0.1em 0}
+.ui-tabs .ui-tabs-nav li a {padding: 0.4em }
+
+/*
+ * resizable
+ */
+.ui-resizable-n {height: 4px; top: 0px;}
+.ui-resizable-s {height: 4px; bottom: 0px;}
+.ui-resizable-e {width: 4px; right: 0px;}
+.ui-resizable-w {width: 4px; left: 0px;}
+
+.ui-dialog .ui-resizable-se {bottom: 0px; height: 6px; right: 0px; width: 6px;}
+.ui-dialog .ui-resizable-sw {bottom: 0px; height: 6px; left: 0px; width: 6px;}
+.ui-dialog .ui-resizable-ne {height: 6px; right: 0px; top: 0px; width: 6px;}
+.ui-dialog .ui-resizable-nw {height: 6px; left: 0px; top: 0px; width: 6px;}
+
+.ui-dialog .ui-dialog-buttonpane {text-align: center;}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {float: none;}
+
+/*
+ * hover
+ */
+.zui-hover {z-index: 999; -moz-box-shadow: 0 0 1px 1px black; -webkit-box-shadow: 0 0 1px 1px black; box-shadow: 0 0 1px 1px black;}
+.zui-hover-cursor {cursor: pointer;}
+
+/*
+ * component
+ */
+.zui-component {position: absolute; outline: none;/* focus dotted */}
+.zui-component-rtl {direction: rtl;}
+.zui-component-ltr {direction: ltr;}
+
+/* 
+ * zui component global 
+ */
+.zui-text-content {background: url(../../images/input.gif) #FFFFFF repeat-x scroll 0pt 0pt;}
+
+/* 
+ * zui component standard 
+ */
+.zui-label {min-width: 30px; min-height: 14px; max-height: 14px; font-weight: bold; overflow: hidden;} 
+
+.zui-text {min-width: 50px; min-height: 24px; max-height: 24px; padding: 0 2px; overflow: hidden;}
+
+.zui-password {min-width: 50px; min-height: 24px; max-height: 24px; padding: 0 2px; overflow: hidden;}
+
+.zui-textarea {min-width: 140px; min-height: 14px; resize: none; padding: 0 2px; overflow: hidden;}
+
+.zui-button {min-width: 100px; min-height: 24px; overflow: hidden;}
+
+.zui-border {border-style: solid; border-width: 2px;}
+.zui-border-top {border-width: 2px 0 0 0}
+.zui-border-bottom {border-width: 0 0 2px 0}
+.zui-border-right {border-width: 0 2px 0 0}
+.zui-border-left {border-width: 0 0 0 2px}
+
+.zui-panel {min-width: 40px; min-height: 14px; border-style: ridge !important; overflow: auto; direction: ltr;}
+.zui-panel-widget {background: repeat-x scroll 50% 50% #e4e4e4; border: 3px groove #a6c9e2; color: #222222;}
+
+/* 
+ * zui component additional 
+ */
+.zui-hidden {min-width: 24px; min-height: 24px; display: none;}
+
+.zui-iconbtn {min-width: 24px; min-height: 24px;}
+.zui-iconbtn span {position: absolute;}
+
+.zui-image {min-width: 14px; min-height: 14px;}
+.zui-image-widget {background: repeat-x scroll 50% 50% #FFFFFF; border: 2px #a6c9e2; color: #222222;}
+
+.zui-clock {min-width: 50px; width: 50px; max-width: 50px; min-height: 14px; height: 14px; max-height: 14px; font-weight: bold;}
+
+.zui-tab {overflow: hidden; direction: ltr;}
+.zui-tabPage {overflow: hidden; direction: ltr;}
+
+/* 
+ * zui component ajax
+ */
+.zui-calendar {min-width: 100px; min-height: 24px; max-height: 24px;}
+.zui-calendar Img {position: absolute; top: 4px;}
+.zui-calendar input {position: absolute; top: 0px; padding: 4.5px;}
+img.trigger {margin: 0px !important;}
+
+.zui-menu {min-width: 100px; min-height: 24px;}
+
+.zui-grid {min-width: 100px; min-height: 50px;}
+
+.zui-lovgrid {min-width: 140px; min-height: 24px; max-height: 24px;}
+.zui-lovgrid input {position: absolute; }
+.zui-lovgrid button {position: absolute; top: 3px; height: 18px; width: 18px;}
+.zui-lovgrid button .ui-button-icon-primary {left: 0;}
+
+.zui-buttonset {min-width: 100px; min-height: 24px;}
+.ui-buttonset .ui-button {margin-left: 0; margin-right: 0;}
+
+.zui-multiselect {min-width: 120px; min-height: 24px;}
+
+.zui-tree {min-width: 50px; min-height: 100px;}
+.jstree { overflow: auto; }
+.jstree a {color : #000000 !important}
+
+.zui-lovtree {min-width: 100px; min-height: 24px; max-height: 24px;}
+.zui-lovtree input {position: absolute; }
+.zui-lovtree button {position: absolute; top: 3px; height: 18px; width: 18px;}
+.zui-lovtree button .ui-button-icon-primary {left: 0;}
+
+.zui-lovgrid {min-width: 100px; min-height: 24px; width: 160px; height: 24px; max-height: 14px;}
+
+/*
+ * grid
+ */
+ 
+ .ZcoreGrid {
+    border-color: #c0c0c0 !important;
+}
+
+ .ZcoreGrid table thead tr th {
+	background: url(header.gif) !important;
+	border-bottom-color: #c0c0c0 !important;	
+}
+
+.ZcoreGrid table thead tr td {
+	border-color: #c0c0c0 !important;
+}
+
+.ZcoreGrid table tbody tr td {
+	border-color: #c0c0c0 !important;
+}
+
+.ZcoreGrid table tfoot {
+	background: url(header.gif) !important;
+	border-top-color: #c0c0c0 !important;
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+		<!--  
+		    ********** 
+		    * jQuery *
+		    **********
+	    -->
+	
+		<script src="jquery/jquery-1.11.1.min.js"></script>
+		
+	    <!--  
+		    ************* 
+		    * jQuery UI *
+		    *************
+	    -->	
+	    	
+	    <!-- jQuery UI - CSS -->	
+		<link rel="stylesheet" href="jquery/css/redmond/jquery-ui.min.css">
+		
+		<!-- jQuery UI - UI Core -->
+		<script src="jquery/ui/minified/jquery.ui.core.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.widget.min.js"></script>			
+		<!-- <CHANGE> --> 
+		<script src="jquery/ui/jquery.ui.mouse.js"></script>
+		<!-- </CHANGE> -->
+		<script src="jquery/ui/minified/jquery.ui.position.min.js"></script>
+		
+	    <!-- jQuery UI - Interactions -->
+		<script src="jquery/ui/minified/jquery.ui.draggable.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.droppable.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.resizable.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.selectable.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.sortable.min.js"></script>	    
+	    		
+	    <!-- jQuery UI - Widgets -->		
+		<script src="jquery/ui/minified/jquery.ui.accordion.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.autocomplete.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.button.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.datepicker.min.js"></script>	    		
+		<script src="jquery/ui/minified/jquery.ui.dialog.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.menu.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.progressbar.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.slider.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.spinner.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.tabs.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.tooltip.min.js"></script>
+		
+		<!-- jQuery UI - Efects -->
+		<script src="jquery/ui/minified/jquery.ui.effect.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-blind.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-bounce.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-clip.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-drop.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-explode.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-fade.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-fold.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-highlight.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-pulsate.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-scale.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-shake.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-slide.min.js"></script>
+		<script src="jquery/ui/minified/jquery.ui.effect-transfer.min.js"></script>
+		
+		<!-- browser -->
+		<script src="js/zcore/util/zcore.browser.js"></script>		
+		
+	    <!--  
+		    ************* 
+		    * Resources *
+		    *************
+	    -->	
+		
+		<!-- code mirror -->	
+	    <link rel="stylesheet" href="js/codemirror-3.11/lib/codemirror.css">
+	    <script src="js/codemirror-3.11/lib/codemirror.js"></script>    
+	    <!-- code mirror theme -->
+	    <link rel="stylesheet" href="js/codemirror-3.11/theme/eclipse.css">    
+	    <!-- code mirror syntax -->
+	    <script src="js/codemirror-3.11/mode/javascript/javascript.js"></script>   
+	    
+	    <!-- multi select --> 
+	    <link rel="stylesheet" href="js/dropdown-check-list.1.4/css/ui.dropdownchecklist.themeroller.css">
+	    <script src="js/dropdown-check-list.1.4/js/ui.dropdownchecklist.js"></script>  
+	    
+	    <!-- contextmenu -->
+	    <script src="js/contextmenu/jquery.contextmenu.js"></script>
+   		<link rel="stylesheet" href="js/contextmenu/jquery.contextmenu.css">
+	    
+	    <!--  
+		    ********* 
+		    * Zcore *
+		    *********
+	    -->
+	    
+	    <!--  zcore core stylesheet -->
+		<link rel="stylesheet" href="css/themes/redmond/core.css">
+		<link rel="stylesheet" href="css/themes/redmond/design.css">
+		<link rel="stylesheet" href="css/core.css">  
+		
+		<!-- zcore json -->
+		<script src="js/zcore/util/zcore.json.js"></script>
+		
+		<!-- zcore validation -->		
+		<script src="js/zcore/util/zcore.validation.js"></script>		
+	
+		<!--  zcore core resource -->
+		<script src="js/zcore/design/core/zcore.object.factory.js"></script>
+		<script src="js/zcore/design/core/zcore.action.js"></script>
+		<script src="js/zcore/design/core/zcore.method.js"></script>
+		<script src="js/zcore/design/core/zcore.property.js"></script>
+		<script src="js/zcore/design/core/zcore.component.js"></script>
+		
+		<!-- zcore base resource -->
+		<script src="js/zcore/design/base/zcore.postable.js"></script>
+		<script src="js/zcore/design/base/zcore.ajax.js"></script>
+
+		<!-- zcore proxy -->
+		<script src="js/zcore/design/friend/zcore.lov.js"></script>
+	
+		<!-- zcore item resource -->
+		<script src="js/zcore/design/items/zcore.item.js"></script>		
+		<script src="js/zcore/design/items/zcore.gridItem.js"></script>
+		<script src="js/zcore/design/items/zcore.validatorItem.js"></script>
+	     	
+		<!-- zcore component inheritance resources -->
+		<script src="js/zcore/design/zcore.form.js"></script>
+		
+		<!-- zcore component inheritance resources standard -->
+		<script src="js/zcore/design/zcore.label.js"></script>
+		<script src="js/zcore/design/zcore.text.js"></script>
+		<script src="js/zcore/design/zcore.textarea.js"></script>		
+		<script src="js/zcore/design/zcore.password.js"></script>	
+		<script src="js/zcore/design/zcore.button.js"></script>
+		<script src="js/zcore/design/zcore.border.js"></script>
+		<script src="js/zcore/design/zcore.panel.js"></script>
+		
+		<!-- zcore component inheritance resources additional -->
+		<script src="js/zcore/design/zcore.hidden.js"></script>
+		<script src="js/zcore/design/zcore.iconbtn.js"></script>
+		<script src="js/zcore/design/zcore.image.js"></script>
+		<script src="js/zcore/design/zcore.clock.js"></script>
+		<script src="js/zcore/design/zcore.tab.js"></script>		
+		<script src="js/zcore/design/zcore.tabPage.js"></script>		
+		<script src="js/zcore/design/zcore.accordion.js"></script>
+		<script src="js/zcore/design/zcore.accordionPage.js"></script>
+		<script src="js/zcore/design/zcore.upload.js"></script>									
+
+		<!-- zcore component inheritance resources ajax -->
+		<script src="js/zcore/design/zcore.calendar.js"></script>				
+		<script src="js/zcore/design/zcore.menu.js"></script>		
+		<script src="js/zcore/design/zcore.grid.js"></script>		
+		<script src="js/zcore/design/zcore.lovgrid.js"></script>
+		<script src="js/zcore/design/zcore.buttonset.js"></script>
+		<script src="js/zcore/design/zcore.multiselect.js"></script>
+		<script src="js/zcore/design/zcore.tree.js"></script>
+		<script src="js/zcore/design/zcore.lovtree.js"></script>
+		<script src="js/zcore/design/zcore.captcha.js"></script>
+		
+		<!-- zcore helper -->
+		<script src="js/zcore/helper/zcore.loading.js"></script>
+		<script src="js/zcore/helper/zcore.box.js"></script>
+		<script src="js/zcore/helper/zcore.bar.js"></script>
+		<script src="js/zcore/helper/zcore.hint.js"></script>
+		<script src="js/zcore/helper/zcore.dialog.js"></script>					
+				
+		<!-- zcore app -->
+		<script src="js/zcore/zcore.app.js"></script>			
+			
+	    <!--  
+		    ****************** 
+		    * zcore designer *
+		    ******************
+	    -->
+	    	
+		<script src="js/zcore/designer/zcore.selected.js"></script>
+		<script src="js/zcore/designer/zcore.expression.js"></script>
+		<script src="js/zcore/designer/zcore.editor.js"></script>	
+		<script src="js/zcore/designer/zcore.palette.js"></script>
+		<script src="js/zcore/designer/zcore.inspector.js"></script>
+		<script src="js/zcore/designer/zcore.items.js"></script>	
+		<script src="js/zcore/designer/zcore.designer.js"></script>
+				
+	    <!--  
+		    ************** 
+		    * initialize *
+		    **************
+	    -->	
+	    		
+		<script type="text/javascript">
+			$(function() {
+				$.ZAP.initial();
+			})		
+		</script>
+					
+		<title>Designer</title>
+	
+	</head>
+	<body>
+	</body>
+</html>

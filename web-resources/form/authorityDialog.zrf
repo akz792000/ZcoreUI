@@ -1,0 +1,24 @@
+<Z><E><![CDATA[  authorityDialog.onFinalize(function() {
+    authorityName.disabled(authorityAction.value() == 'remove');
+  });
+  ok.onClick(function() {
+    authorityDialog.call({
+      action : '/portal/service/authorityDialog/' + authorityAction.value(),
+      success: function(data) {				
+        app.bar.show('success', app.message.msg('success'));
+        var tree = app.forms.authority.elements.authorityTree;
+        switch (authorityAction.value()) {
+          case 'persist':
+            tree.persist_node(data);
+            break;
+          case 'merge':
+            tree.merge_node(data);
+            break;
+          case 'remove':
+            tree.remove_node(data);
+            break;
+        }        
+        authorityDialog.close();
+      }	
+    });     
+  });]]></E><M><![CDATA[{"a":["form","authorityDialog",0,0,163,277,309,597,"","","${authorityDialog.title}",5,0,[0,1,3],[0,2]],"c":[{"a":["hidden","authorityId","authorityId",5,5,1,0,[]]},{"a":["hidden","authorityParent","authorityParent",5,33,1,0,[]]},{"a":["hidden","authorityAction","authorityAction",4,63,1,0,[]]},{"a":["label","label0","${authorityDialog.authorityName}",0,0,14,69,39,33,1,"","","",0]},{"a":["text","authorityName","authorityName",1,0,22,124,34,118,1,1,"","","",0,0,1,0,[],-1]},{"a":["button","ok","${ok}",0,24,214,88,31,1,2,"","","",0]}]}]]></M></Z>

@@ -1,0 +1,258 @@
+/**
+ * 
+ * @author Ali Karimizandi
+ * @since 2012-2014 
+ * @version 1.0
+ *  
+ */
+
+@CHARSET "UTF-8";
+
+.ZcoreGrid {
+	margin-left: auto; 
+	margin-right: auto; 
+	border: 0px;
+	margin: 0;
+    padding: 0; 
+    outline: none;
+    border: 1px solid #A3BAD9;
+}
+
+/*
+ * table
+ */ 
+
+.ZcoreGrid table {
+	font-family: tahoma, arial, helvetica, sans-serif !important;
+    font-size: 11px;	
+    border-collapse: collapse;
+}
+
+.ZcoreGrid table tr {
+	color: black !important;
+}
+
+/*
+ * thead
+ */
+
+.ZcoreGrid table thead tr th {
+	background: url(images/header.gif);
+	border-bottom: 1px solid #A3BAD9;	
+}
+
+.ZcoreGrid table thead tr th div {	
+	border-color: #A3BAD9 !important;	
+}
+
+.ZcoreGrid table thead tr th p {
+	margin: 0;
+}
+
+.ZcoreGrid table thead tr td {
+	background: #F9F9F9 !important; 
+	text-align: center; 
+	padding: 4px; 
+	border: 1px solid #A3BAD9;
+}
+
+.ZcoreGrid table tbody tr td {
+	padding: 4px; 
+	border: 1px solid #A3BAD9;
+}
+
+.ZcoreGrid table thead tr td img {
+	cursor: pointer;
+}
+
+.ZcoreGrid table thead tr td input {
+	background: #FFFFFF repeat-x scroll 0pt 0pt !important;
+	border: 1px solid #B5B8C8;
+	width: 90%;
+	margin: 0; 
+	padding: 1px; 
+}
+
+.ZcoreGrid table thead tr td select {
+	background: #FFFFFF repeat-x scroll 0pt 0pt !important;
+	border: 1px solid #B5B8C8;
+	width: 100%;
+	height: 100%;  
+	margin: 0; 
+	padding: 0; 
+}
+/*
+ * tbody
+ */
+.ZcoreGridDivBody {
+	background-color: white; 
+}
+
+.ZcoreGrid table tbody tr {
+	cursor: pointer;
+}
+
+.ZcoreGrid table tbody tr td:nth-child(1) {
+	font-weight: bold;
+}
+
+/*
+ * tfoot
+ */
+
+.ZcoreGrid table tfoot {
+	background: url(images/header.gif);
+	border-top: 1px solid #A3BAD9;
+	font-weight:bold;
+	height: 100%;
+	width: 100%;
+}
+
+.ZcoreGrid table tfoot tr td img {
+	cursor: pointer; 
+	vertical-align: middle; 
+}
+
+.ZcoreGrid table tfoot tr td input {
+    width: 30px;
+    background: #FFFFFF repeat-x scroll 0pt 0pt;
+	margin: 1px;
+    border: 1px solid #B5B8C8;
+}
+
+.ZcoreGridIcon {
+	background: url(images/icons.png) no-repeat center;
+	background-position: 0px -109px;
+	padding-left: 16px;	
+}
+
+.ZcoreGridDisable {
+	opacity: .65 !important; 
+	filter: Alpha(Opacity=65) !important;
+	background-image: none;
+}
+
+.ZcoreGridEvenRow {
+	background: #fff1d7;
+}
+
+.ZcoreGridOddRow {
+	background: white;
+}
+
+.ZcoreGridSelectedRow {
+	background: #d5effc !important;
+}
+
+.ZcoreGridHoverRow td:nth-child(1) {
+	background: #2E6E9E !important;
+	color: white;
+	font-weight: bold;
+}
+
+.ZcoreGridRefreshIcon {
+	background: url(images/load.gif) no-repeat center !important;	
+}
+
+/*
+ * header icon
+ */
+
+.ZcoreGridHeaderIcon {
+	cursor: pointer; 
+	background: url(images/icons.png) no-repeat center;
+	padding: 2px 14px 2px 2px;	
+	margin: 0px 4px 0px 4px;
+	position: relative;
+	top: 2px;
+}
+
+.ZcoreGridRefreshStaticIcon {
+	background-position: 0px -158px;
+}
+
+.ZcoreGridFilterIcon {
+	background-position: 0px -57px;
+}
+
+.ZcoreGridPersistIcon {
+	background-position: 0px -236px;
+}
+
+.ZcoreGridMergeIcon {
+	background-position: 0px -184px;
+}
+
+.ZcoreGridRemoveIcon {
+	background-position: 0px -288px;
+}
+
+/*
+ * column icon 
+ */
+
+.ZcoreGridBGIcon {
+	cursor: pointer;
+	padding-left: 8px;
+	padding-right: 8px;	
+	background: url(images/icons.png);
+	background-position: -3px -17px;	
+}
+
+.ZcoreGridASCIcon {
+	cursor: pointer; 
+	padding-left: 8px;
+	padding-right: 8px;	
+	background: url(images/icons.png);
+	background-position: -3px 0px;	
+}
+
+.ZcoreGridDSCIcon {
+	cursor: pointer; 
+	padding-left: 8px;
+	padding-right: 8px;	
+	background: url(images/icons.png);
+	background-position: -3px -36px;	
+}
+
+/*
+ * footer icon 
+ */
+ 
+.ZcoreGridLastRow {
+	background: url(images/header.gif) top repeat-x !important;
+	font-weight: bold;
+	text-align: center;
+}
+
+.ZcoreGridFirstIcon {
+	cursor: pointer; 
+	padding-left: 8px;
+	padding-right: 8px;	
+	background: url(images/icons.png);
+	background-position: 0px -83px;
+}
+
+.ZcoreGridNextIcon {
+	cursor: pointer; 
+	padding-left: 8px;
+	padding-right: 8px;	
+	background: url(images/icons.png);
+	background-position: 0px -210px;
+}
+
+.ZcoreGridPrevIcon {
+	cursor: pointer; 
+	padding-left: 8px;
+	padding-right: 8px;	
+	background: url(images/icons.png);
+	background-position: 0px -262px;	
+}
+
+.ZcoreGridLastIcon {
+	cursor: pointer; 
+	padding-left: 8px;
+	padding-right: 8px;	
+	background: url(images/icons.png);
+	background-position: 0px -132px;
+}

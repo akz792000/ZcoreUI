@@ -1,0 +1,55 @@
+<Z><E><![CDATA[  
+  grid.onRemoveClick(function() {
+    var row = grid.getSelectedRows();
+    if (row.length !== 1){
+      app.box.show(app.message.msg('error'), app.message.msg('oneRow'));
+    }
+    else {
+      app.box.show(
+        app.message.msg('question'), 
+        app.message.msg('expireUser'), 
+        'MB_YESNO',
+        {
+          'YES' :  function() {
+            session.call({
+              action : '/portal/service/session/kill',
+              actionParams : { id: row[0][0] },
+              success: function(data) {
+                app.box.show(app.message.msg('success'), app.message.msg('success'));
+                grid.refresh();
+                grid.focus();
+              }
+            });
+          }, 
+          'NO': function() {
+            grid.focus();
+          }
+        }, 
+        'YES'
+      );
+    }
+  });  
+   
+/*grid.addAction({
+      name : 'kill',
+      title : 'kill',				
+      action : function() {
+        var row = grid.getSelectedRows();
+        if (row.length !== 1) 
+          app.box.show(app.message.msg('error'), app.message.msg('oneRow'));
+        else {
+          sessionForm.call({
+            action : 'kill',
+            actionParams : {
+              id : parseInt(row[0][0])
+            },
+            success : function() {				
+              app.bar.show('success', app.message.msg('success'));
+              grid.refresh();
+            }			
+          });	 				
+        }
+      }	
+});*/
+
+]]></E><M><![CDATA[{"a":["form","session",0,0,375,441,213,579,"","","${session.title}",0,0,[0,3],[0,1,2]],"c":[{"a":["grid","grid","",0,0,343,437,0,0,1,0,"","","",1,5,0,0,[],,"/portal/service/session/grid",10,0,0,[[80,"${id}",60,1,1,1],[150,"${username}",60,1,1,1],[80,"${status}",30,1,1,1]],1,1,1,"","","default","",0,1]}]}]]></M></Z>

@@ -1,0 +1,50 @@
+<Z><E><![CDATA[userDialog.onFinalize(function() {
+  username.disabled(userAction.value() != 'persist');
+  accountExpiredDate.disabled(accountNonExpired.value());
+  credentialsExpiredDate.disabled(credentialsNonExpired.value());
+  accountLockedDue.disabled(accountNonLocked.value());
+  mainPnl.disabled(userAction.value() == 'remove');
+});
+  
+accountNonExpired.onClick(function() {
+	if (accountNonExpired.value() == "true") {
+		accountExpiredDate.disabled(true);
+		accountExpiredDate.clear();
+	} else {
+		accountExpiredDate.disabled(false);
+	}
+});	
+
+credentialsNonExpired.onClick(function() {
+	if (credentialsNonExpired.value() == "true") {
+		credentialsExpiredDate.disabled(true);
+		credentialsExpiredDate.clear();
+  	} else {
+		credentialsExpiredDate.disabled(false);
+  	}
+});
+
+accountNonLocked.onClick(function() {
+	if (accountNonLocked.value() == "true") {
+    	accountLockedDue.disabled(true);
+		accountLockedDue.clear();
+	} else {
+		accountLockedDue.disabled(false);
+	}
+});
+
+ok.onClick(function() {
+	userDialog.call({
+      action : '/portal/service/userDialog/' + userAction.value(),
+		success: function(data, textStatus, jqXHR) {				
+			app.bar.show('success', app.message.msg('success'));
+			userDialog.close();
+			app.forms.user.elements.userGrid.refresh();      
+		}	
+	});
+});
+
+cancel.onClick(function() {
+	userDialog.close();
+});
+]]></E><M><![CDATA[{"a":["form","userDialog",0,0,329,707,236,446,"","","${userDialog.title}",5,0,[0,1,3],[1]],"c":[{"a":["panel","mainPnl",0,0,253,683,3,7,1,"zui-border-style","","",0,0],"c":[{"a":["label","username_lbl","${userDialog.username}",0,0,14,175,12,13,1,"","","",0]},{"a":["label","enabled_lbl","${userDialog.enabled}",0,0,14,127,12,327,1,"","","",0]},{"a":["label","accountNonExpired_lbl","${userDialog.accountNonExpired}",0,0,14,170,48,13,1,"","","",0]},{"a":["label","credentialsNonExpired_lbl","${userDialog.credentialsNonExpired}",0,0,14,159,84,13,1,"","","",0]},{"a":["label","accountNonLocked_lbl","${userDialog.accountNonLocked}",0,0,14,170,120,12,1,"","","",0]},{"a":["label","accountExpiredDate_lbl","${userDialog.accountExpiredDate}",0,0,14,123,48,326,1,"","","",0]},{"a":["label","credentialsExpiredDate_lbl","${userDialog.credentialsExpiredDate}",0,0,14,120,84,327,1,"","","",0]},{"a":["label","accountLockedDue_lbl","${userDialog.accountLockedDue}",0,0,14,116,120,328,1,"","","",0]},{"a":["label","authority_lbl","${userDialog.authority}",0,0,14,173,156,12,1,"","","",0]},{"a":["hidden","userId","",187,15,1,0,[]]},{"a":["hidden","userAction","userAction",187,43,1,0,[]]},{"a":["text","username","",0,0,22,98,10,164,1,1,"","","",0,0,1,0,[],-1]},{"a":["buttonset","enabled",,0,0,24,144,10,480,1,2,"","","",0,1,0,[],,"",0]},{"a":["buttonset","accountNonExpired",,0,0,24,144,42,164,1,3,"","","",0,1,0,[],,"",0]},{"a":["calendar","accountExpiredDate","",0,0,24,100,42,480,1,4,"","","",0,0,1,0,[],,""]},{"a":["buttonset","credentialsNonExpired",,0,0,24,144,78,164,1,5,"","","",0,1,0,[],,"",0]},{"a":["calendar","credentialsExpiredDate","",0,0,24,100,79,480,1,6,"","","",0,0,1,0,[],,""]},{"a":["buttonset","accountNonLocked",,0,0,24,144,117,163,1,7,"","","",0,1,0,[],,"",0]},{"a":["textarea","accountLockedDue","accountLockedDue",0,0,109,183,123,480,1,8,"","","",0,0,1,0,[],-1]},{"a":["lovtree","authority",,0,0,24,144,152,164,1,9,"","","${userDialog.authority}",0,1,0,[],,"/portal/service/userDialog/authority",0,200,300,0]}]},{"a":["button","ok","${ok}",0,24,100,265,226,1,100,"","","",0]},{"a":["button","cancel","${cancel}",0,24,100,266,334,1,200,"","","",0]}]}]]></M></Z>
